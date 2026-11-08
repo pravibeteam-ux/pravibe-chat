@@ -1,5 +1,7 @@
 name: Build Pravibe APK
-on: [push]
+on:
+  push:
+    branches: [ main ]
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -7,7 +9,8 @@ jobs:
       - uses: actions/checkout@v4
       - uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.22.0'
+          channel: stable
+          flutter-version: '3.19.6'
       - run: flutter pub get
       - run: flutter build apk --release
       - uses: actions/upload-artifact@v4
